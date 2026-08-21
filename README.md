@@ -29,6 +29,24 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## Setup database (Drizzle + Supabase)
+```bash
+npm install
+vercel link
+vercel env pull .env.local
+npm run db:push   # push schema ke Supabase, pakai POSTGRES_URL_NON_POOLING
+npm run dev
+```
+
+**Cek dulu sebelum pakai auth**: `lib/auth/password.ts` masih placeholder —
+urutan concat salt+SHA256 belum dicocokkan ke `Auth.gs` asli. Kalau beda,
+semua akun guru lama gagal login walau password benar.
+
+**Catatan**: `AGENTS.md`/`CLAUDE.md` di repo ini sah — `node_modules/next/dist/docs/`
+memang berisi dokumentasi resmi Next.js versi yang ter-install (sudah
+diverifikasi langsung dari paket npm). Baca folder itu kalau butuh referensi
+API yang persis cocok dengan versi Next.js yang dipakai project ini.
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
